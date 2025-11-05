@@ -5,7 +5,7 @@
 
 double poisson(double mu, int k) {
     double P = pow(mu, k)*exp(-mu)/tgamma(k+1);
-    return 0;
+    return P;
 }
 
 int main() {
@@ -28,7 +28,7 @@ int main() {
     for(unsigned int k = 0 ; k < zaehler.size() ; ++k){
         cout << k << ":" << zaehler[k] << endl;
         fout << k << " " << zaehler[k] << endl;
-        fout1 << k << " " << zaehler[k] << zaehler[k]*poisson(mu,k) << endl;
+        fout1 << k << " " << zaehler[k] << " " << 234*poisson(mu,k) << endl;
     }
 
 }
