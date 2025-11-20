@@ -65,6 +65,6 @@ int main() {
 
     double Lambda = prob(3.11538,daten)/prob1(daten);
 
-    cout << (-2*log(Lambda)-233)/sqrt(2*233) << endl;
+    cout << -2*log(Lambda) << endl;
     //cout << sqrt(3.11538)/sqrt(234) << endl; // Uncertainty on sample mean
 }
