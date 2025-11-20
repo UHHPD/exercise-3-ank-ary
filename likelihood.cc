@@ -19,6 +19,15 @@ double prob(double mu,vector<int> daten) {
     return like; 
 }
 
+double prob1(vector<int> daten) {
+    double like = 1;
+
+    for(int k : daten) {
+        like *= poisson(k,k);
+    }
+    return like; 
+}
+
 int main() {
     using namespace std;
     ofstream fout("likelihood.txt");
@@ -44,15 +53,18 @@ int main() {
     cout << like << endl;
 
 
-    double mu_loop = 3;
+    double mu_loop = 2.5;
 
-    while( mu_loop < 3.25) {
+    while( mu_loop < 4.5) {
         fout << mu_loop << " " << prob(mu_loop,daten) << endl;
         fout1 << mu_loop << " " << -2*log(prob(mu_loop,daten)) << endl;
         fout2 << mu_loop << " " << -2*log(prob(mu_loop,daten)) + 2*log(prob(3.11538,daten)) << endl;
 
-        mu_loop += 0.01;
+        mu_loop += 0.1;
     }
 
+    double Lambda = prob(3.11538,daten)/prob1(daten);
+
+    cout << (-2*log(Lambda)-233)/sqrt(2*233) << endl;
     //cout << sqrt(3.11538)/sqrt(234) << endl; // Uncertainty on sample mean
 }
